@@ -5,6 +5,7 @@ const Home = () => (
     <Head>
       <title>travers pinkerton</title>
       <link rel="icon" href="/favicon.ico" />
+      <meta lang="en" />
     </Head>
 
     <main class="p-16 mx-auto max-w-screen-lg">
@@ -15,6 +16,7 @@ const Home = () => (
         <img
           class="rounded h-64 w-auto mx-auto mb-8 md:mb-0 md:mr-8"
           src="/aftonandi.jpg"
+          alt="profile picture"
         />
         <div class="md:self-center">
           <h2 class="text-gray-300 text-2xl mb-8">
