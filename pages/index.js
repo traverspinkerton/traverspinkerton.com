@@ -8,17 +8,24 @@ const Home = () => (
     </Head>
 
     <main class="p-16 mx-auto max-w-screen-lg">
-      <h1 class="text-green-400 text-4xl font-extrabold">travers pinkerton</h1>
+      <h1 class="text-green-400 text-4xl font-extrabold hover:text-teal-400">
+        travers pinkerton
+      </h1>
       <div class="mt-16 md:flex">
         <img
           class="rounded h-64 w-auto mx-auto mb-8 md:mb-0 md:mr-8"
           src="/aftonandi.jpg"
         />
-        <h2 class="text-gray-300 text-xl">
-          Full Stack Software Engineer, specializing in modern javascript web
-          apps. Experience leading engineers to create products through an
-          end-user perspective.
-        </h2>
+        <div class="md:self-center">
+          <h2 class="text-gray-300 text-2xl mb-4">
+            👋 y'all. I'm a Software Engineer living in Austin TX.
+          </h2>
+          <h2 class="text-gray-300 text-xl">
+            My speciality is building modern javascript web apps. Additionally,
+            I have experience leading engineers to create products through an
+            end-user perspective.
+          </h2>
+        </div>
       </div>
     </main>
 
