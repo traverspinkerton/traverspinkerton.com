@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { FaTwitter, FaGithub } from "react-icons/fa";
 
 const Home = () => (
   <div>
@@ -45,30 +46,17 @@ const Home = () => (
       </div>
     </main>
 
-    <footer class="flex justify-center text-gray-300">
-      <a class="hover:text-green-400 mx-4" href="https://twitter.com/Travers_P">
-        Twitter
+    <footer class="flex justify-center text-gray-300 text-xl">
+      <a class="hover:text-pink-400 mx-4" href="https://twitter.com/Travers_P">
+        <FaTwitter />
       </a>
       <a
-        class="hover:text-green-400 mx-4"
+        class="hover:text-pink-400 mx-4"
         href="https://github.com/traverspinkerton/"
       >
-        Github
+        <FaGithub />
       </a>
     </footer>
-    {/* <style jsx global>{`
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-    `}</style> */}
   </div>
 );
 
