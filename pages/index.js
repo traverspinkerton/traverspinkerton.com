@@ -17,13 +17,27 @@ const Home = () => (
           src="/aftonandi.jpg"
         />
         <div class="md:self-center">
-          <h2 class="text-gray-300 text-2xl mb-4">
-            👋 y'all. I'm a Software Engineer living in Austin TX.
+          <h2 class="text-gray-300 text-2xl mb-8">
+            👋 y'all. I'm a{" "}
+            <span class="text-teal-400 hover:text-green-400">
+              Software Engineer
+            </span>{" "}
+            living in Austin TX.
+          </h2>
+          <h2 class="text-gray-300 text-xl mb-4">
+            My speciality is building{" "}
+            <span class="text-teal-400 hover:text-green-400">
+              modern javascript web apps
+            </span>
+            . Additionally, I have experience leading engineers to create
+            products through an end-user perspective.
           </h2>
           <h2 class="text-gray-300 text-xl">
-            My speciality is building modern javascript web apps. Additionally,
-            I have experience leading engineers to create products through an
-            end-user perspective.
+            Currently fascinated by{" "}
+            <span class="text-teal-400 hover:text-green-400">
+              the JAM stack
+            </span>
+            .
           </h2>
         </div>
       </div>
