@@ -1,7 +1,9 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind utilities;
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
 
 body {
   @apply bg-gray-800;
 }
+/* purgecss end ignore */
