@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { FaTwitter, FaGithub } from "react-icons/fa";
 
 const Home = () => (
@@ -10,9 +11,16 @@ const Home = () => (
     </Head>
 
     <main class="p-16 mx-auto max-w-screen-lg">
-      <h1 class="text-green-400 text-4xl font-extrabold hover:text-teal-400">
-        travers pinkerton
-      </h1>
+      <header class="flex items-center justify-between">
+        <h1 class="text-green-400 text-4xl font-extrabold hover:text-teal-400">
+          travers pinkerton
+        </h1>
+        <Link href="/blog">
+          <a class="text-green-400 text-3xl font-extrabold hover:text-teal-400">
+            blog
+          </a>
+        </Link>
+      </header>
       <div class="mt-16 md:flex">
         <img
           class="rounded h-64 w-auto mx-auto mb-8 md:mb-0 md:mr-8"
