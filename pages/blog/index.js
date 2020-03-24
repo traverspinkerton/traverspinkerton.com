@@ -22,17 +22,20 @@ const Home = ({ posts }) => (
         </Link>
         <Link href="/blog">
           <a class="text-green-400 text-3xl font-extrabold hover:text-teal-400">
-            Archive
+            Posts
           </a>
         </Link>
       </header>
-      {posts.map(post => (
-        <div key={post.title}>
-          <h3>{post.title}</h3>
-          <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
-          <p>{post.date}</p>
-        </div>
-      ))}
+      <ul>
+        {posts.map(({ title, date, path }) => (
+          <li key={path} class="mt-8 flex justify-between items-center">
+            <Link href={`/blog/${path}`}>
+              <a class="text-teal-400 hover:text-green-400 text-2xl">{title}</a>
+            </Link>
+            <p class="text-gray-300">{date}</p>
+          </li>
+        ))}
+      </ul>
     </main>
   </div>
 );
@@ -42,12 +45,16 @@ const postsPath = join(process.cwd(), "posts");
 export async function getStaticProps() {
   const posts = fs.readdirSync(postsPath).map(slug => {
     let file = fs.readFileSync(`${postsPath}/${slug}`, "utf-8");
-    let post = matter(file);
+    let { data } = matter(file);
 
     return {
-      title: post.data.title,
-      content: post.content,
-      date: post.data.Date.toString()
+      path: slug.replace(".md", ""),
+      title: data.title,
+      date: data.Date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      })
     };
   });
 

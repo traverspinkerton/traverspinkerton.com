@@ -1,8 +1,18 @@
 ---
+
 title: My Second Post
+
 Date: 2020-03-24
+
 ---
 
-# The second post I've wrote
+# Something great
 
-## another header
+*with* a **list**
+
+- a
+- b
+- c
+
+### yep
+

@@ -1,36 +1,66 @@
+import Head from "next/head";
+import Link from "next/link";
+import { FaHome } from "react-icons/fa";
 import matter from "gray-matter";
-import { join } from "path";
+import marked from "marked";
+import path from "path";
 import fs from "fs";
 
-export default function Post({ post }) {
+export default function Post({ title, date, htmlString }) {
   return (
-    <div>
-      <p>{post.title}</p>
-    </div>
+    <>
+      <Head>
+        <title>travers pinkerton - blog</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta lang="en" />
+      </Head>
+
+      <main class="p-16 mx-auto max-w-screen-lg">
+        <header class="flex items-center">
+          <Link href="/">
+            <FaHome class="text-green-400 text-2xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
+              travers pinkerton
+            </FaHome>
+          </Link>
+          <Link href="/blog">
+            <a class="text-green-400 text-2xl font-extrabold hover:text-teal-400">
+              Posts
+            </a>
+          </Link>
+        </header>
+        <h1 class="text-teal-400 hover:text-green-400 text-3xl my-8">
+          {title}
+        </h1>
+        <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+        <p class="text-gray-300 mt-8">{date}</p>
+      </main>
+    </>
   );
 }
 
 export async function getStaticPaths() {
   const paths = fs
-    .readdirSync(postsPath)
-    .map(slug => ({ params: { slug: slug.split(".")[0] } }));
+    .readdirSync("posts")
+    .map(slug => ({ params: { slug: slug.replace(".md", "") } }));
 
   return { paths, fallback: false };
 }
 
-const postsPath = join(process.cwd(), "posts");
+// const postsPath = join(process.cwd(), "posts");
 
-export async function getStaticProps({ params }) {
-  const file = fs.readFileSync(`${postsPath}/${params.slug}.md`, "utf-8");
-  let post = matter(file);
+export async function getStaticProps({ params: { slug } }) {
+  const file = fs.readFileSync(path.join("posts", slug + ".md"), "utf-8");
+  const { data: metaData, content } = matter(file);
 
   return {
     props: {
-      post: {
-        title: post.data.title,
-        content: post.content,
-        date: post.data.Date.toString()
-      }
+      title: metaData.title,
+      htmlString: marked(content),
+      date: metaData.Date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      })
     }
   };
 }
