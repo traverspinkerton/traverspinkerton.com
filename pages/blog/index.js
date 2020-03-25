@@ -40,17 +40,15 @@ const Home = ({ posts }) => (
   </div>
 );
 
-const postsPath = join(process.cwd(), "posts");
-
 export async function getStaticProps() {
-  const posts = fs.readdirSync(postsPath).map(slug => {
-    let file = fs.readFileSync(`${postsPath}/${slug}`, "utf-8");
-    let { data } = matter(file);
+  const posts = fs.readdirSync("posts").map(slug => {
+    let file = fs.readFileSync(`posts/${slug}`, "utf-8");
+    let { data: metaData } = matter(file);
 
     return {
       path: slug.replace(".md", ""),
-      title: data.title,
-      date: data.Date.toLocaleDateString("en-US", {
+      title: metaData.title,
+      date: metaData.date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric"
