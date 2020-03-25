@@ -6,6 +6,8 @@ import marked from "marked";
 import path from "path";
 import fs from "fs";
 
+import markdownStyles from "../../css/markdown-styles.module.css";
+
 export default function Post({ title, date, htmlString }) {
   return (
     <>
@@ -15,7 +17,7 @@ export default function Post({ title, date, htmlString }) {
         <meta lang="en" />
       </Head>
 
-      <main class="p-16 mx-auto max-w-screen-lg">
+      <main class="p-16 mx-auto max-w-screen-xl">
         <header class="flex items-center">
           <Link href="/">
             <FaHome class="text-green-400 text-2xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
@@ -31,7 +33,10 @@ export default function Post({ title, date, htmlString }) {
         <h1 class="text-teal-400 hover:text-green-400 text-3xl my-8">
           {title}
         </h1>
-        <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+        <div
+          className={markdownStyles["markdown"]}
+          dangerouslySetInnerHTML={{ __html: htmlString }}
+        />
         <p class="text-gray-300 mt-8">{date}</p>
       </main>
     </>
@@ -56,7 +61,7 @@ export async function getStaticProps({ params: { slug } }) {
     props: {
       title: metaData.title,
       htmlString: marked(content),
-      date: metaData.Date.toLocaleDateString("en-US", {
+      date: metaData.date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric"
