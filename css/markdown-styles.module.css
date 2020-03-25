@@ -1,3 +1,4 @@
+/* purgecss start ignore */ 
 .markdown {
   @apply text-lg leading-relaxed text-gray-300;
 }
@@ -32,3 +33,4 @@
 .markdown code {
   @apply text-green-400;
 }
+/* purgecss end ignore */
