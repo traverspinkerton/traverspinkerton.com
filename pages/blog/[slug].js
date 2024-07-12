@@ -17,27 +17,27 @@ export default function Post({ title, date, htmlString }) {
         <meta lang="en" />
       </Head>
 
-      <main class="p-16 mx-auto max-w-screen-xl">
-        <header class="flex items-center">
-          <Link href="/">
-            <FaHome class="text-green-400 text-2xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
+      <main className="p-16 mx-auto max-w-screen-xl">
+        <header className="flex items-center">
+          <Link legacyBehavior href="/">
+            <FaHome className="text-green-400 text-2xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
               travers pinkerton
             </FaHome>
           </Link>
-          <Link href="/blog">
-            <a class="text-green-400 text-2xl font-extrabold hover:text-teal-400">
+          <Link legacyBehavior href="/blog">
+            <a className="text-green-400 text-2xl font-extrabold hover:text-teal-400">
               Posts
             </a>
           </Link>
         </header>
-        <h1 class="text-teal-400 hover:text-green-400 text-3xl my-8">
+        <h1 className="text-teal-400 hover:text-green-400 text-3xl my-8">
           {title}
         </h1>
         <div
           className={markdownStyles["markdown"]}
           dangerouslySetInnerHTML={{ __html: htmlString }}
         />
-        <p class="text-gray-300 mt-8">{date}</p>
+        <p className="text-gray-300 mt-8">{date}</p>
       </main>
     </>
   );
@@ -46,7 +46,7 @@ export default function Post({ title, date, htmlString }) {
 export async function getStaticPaths() {
   const paths = fs
     .readdirSync("posts")
-    .map(slug => ({ params: { slug: slug.replace(".md", "") } }));
+    .map((slug) => ({ params: { slug: slug.replace(".md", "") } }));
 
   return { paths, fallback: false };
 }
@@ -64,8 +64,8 @@ export async function getStaticProps({ params: { slug } }) {
       date: metaData.date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
-        day: "numeric"
-      })
-    }
+        day: "numeric",
+      }),
+    },
   };
 }

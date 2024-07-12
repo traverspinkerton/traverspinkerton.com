@@ -13,26 +13,28 @@ const Home = ({ posts }) => (
       <meta lang="en" />
     </Head>
 
-    <main class="p-16 mx-auto max-w-screen-lg">
-      <header class="flex items-center">
-        <Link href="/">
-          <FaHome class="text-green-400 text-4xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
+    <main className="p-16 mx-auto max-w-screen-lg">
+      <header className="flex items-center">
+        <Link legacyBehavior href="/">
+          <FaHome className="text-green-400 text-4xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
             travers pinkerton
           </FaHome>
         </Link>
-        <Link href="/blog">
-          <a class="text-green-400 text-3xl font-extrabold hover:text-teal-400">
+        <Link legacyBehavior href="/blog">
+          <a className="text-green-400 text-3xl font-extrabold hover:text-teal-400">
             Posts
           </a>
         </Link>
       </header>
       <ul>
         {posts.map(({ title, date, path }) => (
-          <li key={path} class="mt-8 flex justify-between items-center">
-            <Link href={`/blog/${path}`}>
-              <a class="text-teal-400 hover:text-green-400 text-2xl">{title}</a>
+          <li key={path} className="mt-8 flex justify-between items-center">
+            <Link legacyBehavior href={`/blog/${path}`}>
+              <a className="text-teal-400 hover:text-green-400 text-2xl">
+                {title}
+              </a>
             </Link>
-            <p class="text-gray-300">{date}</p>
+            <p className="text-gray-300">{date}</p>
           </li>
         ))}
       </ul>
@@ -41,7 +43,7 @@ const Home = ({ posts }) => (
 );
 
 export async function getStaticProps() {
-  const posts = fs.readdirSync("posts").map(slug => {
+  const posts = fs.readdirSync("posts").map((slug) => {
     let file = fs.readFileSync(`posts/${slug}`, "utf-8");
     let { data: metaData } = matter(file);
 
@@ -51,15 +53,15 @@ export async function getStaticProps() {
       date: metaData.date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
-        day: "numeric"
-      })
+        day: "numeric",
+      }),
     };
   });
 
   return {
     props: {
-      posts
-    }
+      posts,
+    },
   };
 }
 
