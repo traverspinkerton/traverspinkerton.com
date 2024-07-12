@@ -15,7 +15,7 @@ const Home = () => (
         <h1 class="text-green-400 text-4xl font-extrabold hover:text-teal-400">
           travers pinkerton
         </h1>
-        <Link href="/blog">
+        <Link legacyBehavior href="/blog">
           <a class="text-green-400 text-3xl font-extrabold hover:text-teal-400">
             blog
           </a>

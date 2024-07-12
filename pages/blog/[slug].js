@@ -19,12 +19,12 @@ export default function Post({ title, date, htmlString }) {
 
       <main class="p-16 mx-auto max-w-screen-xl">
         <header class="flex items-center">
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <FaHome class="text-green-400 text-2xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
               travers pinkerton
             </FaHome>
           </Link>
-          <Link href="/blog">
+          <Link legacyBehavior href="/blog">
             <a class="text-green-400 text-2xl font-extrabold hover:text-teal-400">
               Posts
             </a>
@@ -46,7 +46,7 @@ export default function Post({ title, date, htmlString }) {
 export async function getStaticPaths() {
   const paths = fs
     .readdirSync("posts")
-    .map(slug => ({ params: { slug: slug.replace(".md", "") } }));
+    .map((slug) => ({ params: { slug: slug.replace(".md", "") } }));
 
   return { paths, fallback: false };
 }
@@ -64,8 +64,8 @@ export async function getStaticProps({ params: { slug } }) {
       date: metaData.date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
-        day: "numeric"
-      })
-    }
+        day: "numeric",
+      }),
+    },
   };
 }
