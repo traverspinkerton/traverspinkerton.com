@@ -13,26 +13,28 @@ const Home = ({ posts }) => (
       <meta lang="en" />
     </Head>
 
-    <main class="p-16 mx-auto max-w-screen-lg">
-      <header class="flex items-center">
+    <main className="p-16 mx-auto max-w-screen-lg">
+      <header className="flex items-center">
         <Link legacyBehavior href="/">
-          <FaHome class="text-green-400 text-4xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
+          <FaHome className="text-green-400 text-4xl font-extrabold hover:text-teal-400 cursor-pointer mr-8">
             travers pinkerton
           </FaHome>
         </Link>
         <Link legacyBehavior href="/blog">
-          <a class="text-green-400 text-3xl font-extrabold hover:text-teal-400">
+          <a className="text-green-400 text-3xl font-extrabold hover:text-teal-400">
             Posts
           </a>
         </Link>
       </header>
       <ul>
         {posts.map(({ title, date, path }) => (
-          <li key={path} class="mt-8 flex justify-between items-center">
+          <li key={path} className="mt-8 flex justify-between items-center">
             <Link legacyBehavior href={`/blog/${path}`}>
-              <a class="text-teal-400 hover:text-green-400 text-2xl">{title}</a>
+              <a className="text-teal-400 hover:text-green-400 text-2xl">
+                {title}
+              </a>
             </Link>
-            <p class="text-gray-300">{date}</p>
+            <p className="text-gray-300">{date}</p>
           </li>
         ))}
       </ul>
