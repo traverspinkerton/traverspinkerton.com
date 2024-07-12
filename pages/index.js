@@ -35,7 +35,7 @@ const Home = () => (
             </span>{" "}
             living in Austin TX.
           </h2>
-          <h2 class="text-gray-300 text-xl mb-4">
+          {/* <h2 class="text-gray-300 text-xl mb-4">
             My speciality is building{" "}
             <span class="text-teal-400 hover:text-green-400">
               modern javascript web apps
@@ -49,7 +49,7 @@ const Home = () => (
               the JAM stack
             </span>
             .
-          </h2>
+          </h2> */}
         </div>
       </div>
     </main>
